@@ -14,6 +14,9 @@ d3.select('body').append('p').text('third paragraph');
 
 d3.selectAll('p').style('color', 'blue');*/
 
+
+/* USE DATA TO CREATE DOM ELEMENTS
+
 let dataset = [1, 2, 3, 4, 5];
 
 d3.select('body')
@@ -23,3 +26,16 @@ d3.select('body')
   .append('p') //appends paragraph for each data element
   //.text('D3 rocks my socks!');
   .text( d => {return d} );
+*/
+
+let dataset = [40, 30, 100, 55, 120, 106, 35, 70];
+
+d3.select(".chart")
+  .selectAll("div") //I am selecting all divs in chart class, which is none but I will make some
+  .data(dataset) //get the data
+  .enter() //move on from the "waiting" state
+  .append("div") //now I have a div to work with
+  .style("width", d => {return d * 2 + "px"})
+  .style("background-color", "#009933")
+  .style("color", "white")
+  .text(d => {return d});
